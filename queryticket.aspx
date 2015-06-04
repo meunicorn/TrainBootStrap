@@ -27,7 +27,7 @@
     <![endif]-->
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="post">
         <!-- Static navbar -->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -73,32 +73,24 @@
 
                     <div class="col-xs-3">
                         <h3 class="panel-title">出发点</h3>
-                        <select class="form-control select select-primary select-block mbl" data-toggle="select" id="from">
-                            <optgroup label="出发地">
-                                <option value="0">中山</option>
-                                <option value="1">珠海</option>
-                            </optgroup>
-                            <optgroup label="System">
-                                <option value="2">Messages</option>
-                                <option value="3">My Settings</option>
-                                <option value="4">Logout</option>
-                            </optgroup>
-                        </select>
+                        <asp:DropDownList ID="DropDownList1" runat="server"  data-toggle="select" CssClass="form-control select select-primary select-block mbl" Width="102%">
+                        <asp:ListItem>中山</asp:ListItem>
+                        <asp:ListItem>傲视</asp:ListItem>
+                        <asp:ListItem>土豪</asp:ListItem>
+                        <asp:ListItem>二额</asp:ListItem>
+                        <asp:ListItem>位我</asp:ListItem>
+                    </asp:DropDownList>
                     </div>
 
                     <div class="col-xs-3">
                         <h3 class="panel-title">目的地</h3>
-                        <select class="form-control select select-primary select-block mbl" data-toggle="select" id="to">
-                            <optgroup label="出发地">
-                                <option value="0">中山</option>
-                                <option value="1">珠海</option>
-                            </optgroup>
-                            <optgroup label="System">
-                                <option value="2">Messages</option>
-                                <option value="3">My Settings</option>
-                                <option value="4">Logout</option>
-                            </optgroup>
-                        </select>
+                        <asp:DropDownList ID="DropDownList2" runat="server"  data-toggle="select" CssClass="form-control select select-primary select-block mbl" Width="102%">
+                        <asp:ListItem>中山</asp:ListItem>
+                        <asp:ListItem>珠海</asp:ListItem>
+                        <asp:ListItem>土豪</asp:ListItem>
+                        <asp:ListItem>二额</asp:ListItem>
+                        <asp:ListItem>位我</asp:ListItem>
+                    </asp:DropDownList>
                     </div>
                     <!--timepicker控件-->
                     <div class="form-group">
@@ -112,7 +104,7 @@
                     </div>
 
                     <div class="col-xs-3">
-                        <asp:Button ID="Button1" runat="server" Text="查询行程" CssClass="btn btn-success" />
+                        <asp:Button ID="Button1" runat="server" Text="查询行程" CssClass="btn btn-success" OnClick="Button1_Click" />
                     </div>
                     <!--选地点↑-->
 
@@ -162,10 +154,11 @@
             <script src="js/select2.min.js"></script>
             <script>$('[data-toggle="select"]').select2();</script>
         </div>
-        <p>
-            &nbsp;
-        </p>
-        <asp:GridView ID="GridView1" runat="server">
+
+        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%">
+            <Columns>
+                <asp:ButtonField ButtonType="Button" Text="购买" ControlStyle-CssClass="btn btn-default"/>
+            </Columns>
         </asp:GridView>
     </form>
 </body>
