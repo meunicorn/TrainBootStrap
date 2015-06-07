@@ -42,4 +42,8 @@ public partial class queryticket : System.Web.UI.Page
         #endregion
 
     }
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {//尝试分页
+        GridView1.PageIndex = e.NewPageIndex;
+    }
 }

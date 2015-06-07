@@ -155,11 +155,15 @@
             <script>$('[data-toggle="select"]').select2();</script>
         </div>
 
-        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%">
+        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
             <Columns>
                 <asp:ButtonField ButtonType="Button" Text="购买" ControlStyle-CssClass="btn btn-default"/>
             </Columns>
         </asp:GridView>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts></Scripts>
+            
+        </asp:ScriptManager>
     </form>
 </body>
 </html>
