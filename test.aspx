@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="test.aspx.cs" Inherits="test" %>
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,6 +18,15 @@
             placeholder: "Select a State",
             allowClear: true
         });
+    </script>
+    <script type="text/javascript">
+        function check() {
+            var from = document.getElementById("DropDownList1").value;
+            var to = document.getElementById("DropDownList2").value;
+            if (from == to) {
+                alert("出发地与目的地相同，请重新选择" );
+            }
+        }
     </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -73,56 +83,42 @@
 
                     <div class="col-xs-3">
                         <h3 class="panel-title">出发点</h3>
-                        <select class="form-control select select-primary select-block mbl" data-toggle="select" id="from" name="" from>
-                            <optgroup label="出发地">
-                                <option value="0">中山</option>
-                                <option value="1">珠海</option>
-                            </optgroup>
-                            <optgroup label="System">
-                                <option value="2">Messages</option>
-                                <option value="3">My Settings</option>
-                                <option value="4">Logout</option>
-                            </optgroup>
-                        </select>
+                        <asp:DropDownList ID="DropDownList1" runat="server" data-toggle="select" CssClass="form-control select select-primary select-block mbl" Width="102%">
+                            <asp:ListItem>中山</asp:ListItem>
+                            <asp:ListItem>傲视</asp:ListItem>
+                            <asp:ListItem>土豪</asp:ListItem>
+                            <asp:ListItem>二额</asp:ListItem>
+                            <asp:ListItem>位我</asp:ListItem>
+                        </asp:DropDownList>
                     </div>
 
                     <div class="col-xs-3">
                         <h3 class="panel-title">目的地</h3>
-                        <select class="form-control select select-primary select-block mbl" data-toggle="select" id="to">
-                            <optgroup label="出发地">
-                                <option value="0">中山</option>
-                                <option value="1">珠海</option>
-                            </optgroup>
-                            <optgroup label="System">
-                                <option value="2">Messages</option>
-                                <option value="3">My Settings</option>
-                                <option value="4">Logout</option>
-                            </optgroup>
-                        </select>
+                        <asp:DropDownList ID="DropDownList2" runat="server" data-toggle="select" CssClass="form-control select select-primary select-block mbl" Width="102%">
+                            <asp:ListItem>中山</asp:ListItem>
+                            <asp:ListItem>珠海</asp:ListItem>
+                            <asp:ListItem>土豪</asp:ListItem>
+                            <asp:ListItem>二额</asp:ListItem>
+                            <asp:ListItem>位我</asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                     <!--timepicker控件-->
                     <div class="form-group">
                         <h3 class="panel-title">选择乘车日期</h3>
-                        <div class="input-group date form_date col-xs-3" data-date="" data-date-format="yyyy/mm/dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="16" type="text" value="" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        <div class="input-group date form_date col-xs-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" ReadOnly="true" Text=""></asp:TextBox>
+                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                         </div>
                         <input type="hidden" id="dtp_input2" value="" /><br />
+                        <input type="hidden" id="dtp_input3" value="" /><br />
                     </div>
 
                     <div class="col-xs-3">
+                        <button onclick="check()">hello</button>
                         <asp:Button ID="Button1" runat="server" Text="查询行程" CssClass="btn btn-success" OnClick="Button1_Click" />
                     </div>
                     <!--选地点↑-->
-
-                    <asp:DropDownList ID="DropDownList1" runat="server"  data-toggle="select" CssClass="form-control select select-primary select-block mbl" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="40%">
-                        <asp:ListItem>中山</asp:ListItem>
-                        <asp:ListItem>傲视</asp:ListItem>
-                        <asp:ListItem>土豪</asp:ListItem>
-                        <asp:ListItem>二额</asp:ListItem>
-                        <asp:ListItem>位我</asp:ListItem>
-                    </asp:DropDownList>
 
 
                 </div>
@@ -171,7 +167,15 @@
             <script>$('[data-toggle="select"]').select2();</script>
         </div>
 
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%">
+            <Columns>
+                <asp:ButtonField ButtonType="Button" Text="购买" ControlStyle-CssClass="btn btn-default" />
+            </Columns>
+        </asp:GridView>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts></Scripts>
 
+        </asp:ScriptManager>
     </form>
 </body>
 </html>

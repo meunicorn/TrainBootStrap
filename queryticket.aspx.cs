@@ -22,13 +22,15 @@ public partial class queryticket : System.Web.UI.Page
     {
         #region 读取下拉菜单选项，连接数据库查车票，时间未查询        
         
-        //get from and to
+        //get from , to and date
         string from = DropDownList1.SelectedValue;
         string to = DropDownList2.SelectedValue;
+        string date = dateText.Text.ToString();//date 为时间控件的name属性
+        string d = dateText.Text;
         //
         string strCon = @"Data Source=(LocalDB)\v11.0;AttachDbFilename='C:\Users\Feng\Documents\Visual Studio 2013\WebSites\TrainBootStrap\App_Data\traindb.mdf';Integrated Security=True";
-        string sqlstr = "select * from ticket where 出发点="+"N'"+from+"' and 终点站="+"N'"+to+"'";//定义执行查询操作的SQL语句 N' 为代表改字符为nvarchar
-
+        //string sqlstr = "select * from ticket where 出发点="+"N'"+from+"' and 终点站="+"N'"+to+"'";//定义执行查询操作的SQL语句 N' 为代表改字符为nvarchar
+        string sqlstr = "select * from ticket where 出发点=" + "N'" + from + "' and 终点站=" + "N'" + to + "' and 出发日期 like '"+date+"'";//定义执行查询操作的SQL语句 N' 为代表改字符为nvarchar
         SqlConnection con = new SqlConnection(strCon);//创建数据库连接对象
         SqlDataAdapter da = new SqlDataAdapter(sqlstr, con);//创建数据适配器
         DataSet ds = new DataSet();//创建数据集
@@ -42,8 +44,5 @@ public partial class queryticket : System.Web.UI.Page
         #endregion
 
     }
-    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    {//尝试分页
-        GridView1.PageIndex = e.NewPageIndex;
-    }
+
 }
