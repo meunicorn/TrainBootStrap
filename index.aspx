@@ -37,19 +37,15 @@
                         <ul class="dropdown-menu">
                             <li><a href="#">已买车票</a></li>
                             <li><a href="#">修改密码</a></li>
-                            <li><a href="#">到时再加</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                   
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar/">注销</a></li>
-                    <li class="active"><a href="./">Static top</a></li>
-                    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                </ul>
+                <form class="navbar-form pull-right" runat="server" id="loginform">
+                    <asp:TextBox ID="TextBox1" runat="server" placeholder="用户名" CssClass="input-sm"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" placeholder="密码" CssClass="input-sm" type="password"></asp:TextBox>
+                    <asp:Button ID="login_btn" runat="server" Text="登录" CssClass="btn btn-success"/>
+                </form>
             </div>
             <!--/.nav-collapse -->
         </div>
@@ -58,12 +54,12 @@
     <div align="center">
         <img src="img/trainBG.jpg" width="800" class="img-rounded img-responsive" />
         <p class="img-comment"><strong>提示：</strong> 欢迎来到<strong>ChooChoo</strong>火车订票网站。</p>
-        
+
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

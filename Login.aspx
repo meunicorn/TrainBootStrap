@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MasterPage.aspx.cs" Inherits="MasterPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
 <!DOCTYPE html>
 
@@ -27,10 +27,12 @@
     <![endif]-->
 </head>
 <body>
-    <form id="form1" runat="server">
-       
+    <div class="container">
+        <form id="form1" runat="server">
+            <h2 class="h2" style="margin-left:30%">请登录</h2>
+            <input type="text" class="input-block-level" placeholder="Email address">
+            <asp:TextBox ID="TextBox1" runat="server" CssClass="input-append" placeholder="用户名"></asp:TextBox>
 
-            <!--数据信息 ↓-->
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="js/vendor/jquery.min.js"></script>
             <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -38,6 +40,7 @@
             <script src="js/bootstrap-datetimepicker.min.js"></script>
             <script src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
             <script src="js/select2.min.js"></script>
-    </form>
+        </form>
+    </div>
 </body>
 </html>

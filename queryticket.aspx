@@ -105,9 +105,9 @@
                     <div class="form-group">
                         <h3 class="panel-title">选择乘车日期</h3>
                         <div class="input-group date form_date col-xs-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
-                        <asp:TextBox ID="dateText" runat="server" CssClass="form-control" ToolTip="点击选择日期"></asp:TextBox>
-                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            <asp:TextBox ID="dateText" runat="server" CssClass="form-control" ToolTip="点击选择日期"></asp:TextBox>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                         </div>
                         <input type="hidden" id="dtp_input3" value="" /><br />
                     </div>
@@ -163,16 +163,22 @@
             <script src="js/select2.min.js"></script>
             <script>$('[data-toggle="select"]').select2();</script>
         </div>
-
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%">
-            <Columns>
-                <asp:ButtonField ButtonType="Button" Text="购买" ControlStyle-CssClass="btn btn-default" />
-            </Columns>
-        </asp:GridView>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
             <Scripts></Scripts>
-
         </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%">
+                    <Columns>
+                        <asp:ButtonField ButtonType="Button" Text="购买" ControlStyle-CssClass="btn btn-default" />
+                    </Columns>
+                </asp:GridView>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
     </form>
 </body>
 </html>
