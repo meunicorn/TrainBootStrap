@@ -20,17 +20,7 @@
 
     <!-- Static navbar -->
     <form runat="server">
-    <asp:Menu ID="Menu1" runat="server" CssClass="navbar navbar-default navbar-fixed-top" role="navigation" Orientation="Horizontal">
-        <Items>
-            <asp:MenuItem Text="新建项" Value="新建项" class="navbar-toggle" data-toggle="collapse"></asp:MenuItem>
-            <asp:MenuItem Text="新建项" Value="新建项"></asp:MenuItem>
-            <asp:MenuItem Text="新建项" Value="新建项">
-                <asp:MenuItem Text="新建项" Value="新建项"></asp:MenuItem>
-                <asp:MenuItem Text="新建项" Value="新建项"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="新建项" Value="新建项"></asp:MenuItem>
-        </Items>
-    </asp:Menu></form>
+   </form>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">

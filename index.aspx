@@ -30,21 +30,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">首页</a></li>
-                    <li><a href="#about">查询车票</a></li>
-                    <li><a href="#contact">订票</a></li>
+                    <li><a href="queryticket.aspx">查询车票</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人信息 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">已买车票</a></li>
+                            <li><a href="ticketBought.aspx">已买车票</a></li>
                             <li><a href="#">修改密码</a></li>
-                   
                         </ul>
                     </li>
                 </ul>
+                <asp:Label ID="loginlabel" runat="server" Text="" Visible="false" CssClass="navbar-form pull-right text-success"></asp:Label>
                 <form class="navbar-form pull-right" runat="server" id="loginform">
-                    <asp:TextBox ID="TextBox1" runat="server" placeholder="用户名" CssClass="input-sm"></asp:TextBox>
-                    <asp:TextBox ID="TextBox2" runat="server" placeholder="密码" CssClass="input-sm" type="password"></asp:TextBox>
-                    <asp:Button ID="login_btn" runat="server" Text="登录" CssClass="btn btn-success"/>
+                    <asp:TextBox ID="username_text" runat="server" placeholder="用户名" CssClass="input-sm"></asp:TextBox>
+                    <asp:TextBox ID="password_text" runat="server" placeholder="密码" CssClass="input-sm" type="password"></asp:TextBox>
+                    <asp:Button ID="login_btn" runat="server" Text="登录" CssClass="btn btn-success" OnClick="login_btn_Click" />
                 </form>
             </div>
             <!--/.nav-collapse -->

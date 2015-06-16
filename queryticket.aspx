@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <!-- Select2 -->
     <link href="css/select2.min.css" rel="stylesheet" />
@@ -37,6 +37,9 @@
 </head>
 <body>
     <form id="form1" runat="server" method="post">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts></Scripts>
+        </asp:ScriptManager>
         <!-- Static navbar -->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -48,27 +51,23 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">首页</a></li>
+                        <li><a href="index.aspx">首页</a></li>
                         <li class="active"><a href="#about">查询车票</a></li>
-                        <li><a href="#contact">订票</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人信息 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">已买车票</a></li>
+                                <li><a href="ticketBought.aspx">已买车票</a></li>
                                 <li><a href="#">修改密码</a></li>
                                 <li><a href="#">到时再加</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">注销</a></li>
-                        <li class="active"><a href="./">Static top</a></li>
-                        <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                    </ul>
+                    <asp:Label ID="loginlabel" runat="server" Text="" Visible="false" CssClass="navbar-form pull-right text-success"></asp:Label>
+                    <view class="navbar-form pull-right" runat="server" id="loginform">
+                        <asp:TextBox ID="username_text" runat="server" placeholder="用户名" CssClass="input-sm"></asp:TextBox>
+                        <asp:TextBox ID="password_text" runat="server" placeholder="密码" CssClass="input-sm" type="password"></asp:TextBox>
+                        <asp:Button ID="login_btn" runat="server" Text="登录" CssClass="btn btn-success" OnClick="login_btn_Click" />
+                    </view>
                 </div>
                 <!--/.nav-collapse -->
             </div>
@@ -84,10 +83,11 @@
                         <h3 class="panel-title">出发点</h3>
                         <asp:DropDownList ID="DropDownList1" runat="server" data-toggle="select" CssClass="form-control select select-primary select-block mbl" Width="102%">
                             <asp:ListItem>中山</asp:ListItem>
-                            <asp:ListItem>傲视</asp:ListItem>
-                            <asp:ListItem>土豪</asp:ListItem>
-                            <asp:ListItem>二额</asp:ListItem>
-                            <asp:ListItem>位我</asp:ListItem>
+                            <asp:ListItem>广州</asp:ListItem>
+                            <asp:ListItem>珠海</asp:ListItem>
+                            <asp:ListItem>深圳</asp:ListItem>
+                            <asp:ListItem>佛山</asp:ListItem>
+
                         </asp:DropDownList>
                     </div>
 
@@ -95,10 +95,10 @@
                         <h3 class="panel-title">目的地</h3>
                         <asp:DropDownList ID="DropDownList2" runat="server" data-toggle="select" CssClass="form-control select select-primary select-block mbl" Width="102%">
                             <asp:ListItem>中山</asp:ListItem>
+                            <asp:ListItem>广州</asp:ListItem>
                             <asp:ListItem>珠海</asp:ListItem>
-                            <asp:ListItem>土豪</asp:ListItem>
-                            <asp:ListItem>二额</asp:ListItem>
-                            <asp:ListItem>位我</asp:ListItem>
+                            <asp:ListItem>深圳</asp:ListItem>
+                            <asp:ListItem>佛山</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <!--timepicker控件-->
@@ -163,14 +163,17 @@
             <script src="js/select2.min.js"></script>
             <script>$('[data-toggle="select"]').select2();</script>
         </div>
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-            <Scripts></Scripts>
-        </asp:ScriptManager>
+
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" HorizontalAlign="Center" Width="85%">
                     <Columns>
-                        <asp:ButtonField ButtonType="Button" Text="购买" ControlStyle-CssClass="btn btn-default" />
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:Button ID="buy_btn" runat="server" CausesValidation="false" CommandName="" Text="购买" OnClientClick="javascript:return confirm('确定购买？');" CommandArgument='<%# Eval("车次") %>' OnClick="buy_btn_Click" />
+                            </ItemTemplate>
+                            <ControlStyle CssClass="btn btn-default" />
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>
