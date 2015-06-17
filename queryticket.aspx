@@ -52,7 +52,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="index.aspx">首页</a></li>
-                        <li class="active"><a href="#about">查询车票</a></li>
+                        <li class="active"><a href="#">查询车票</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人信息 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
